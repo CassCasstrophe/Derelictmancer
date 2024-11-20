@@ -1,4 +1,13 @@
-[gd_scene format=3 uid="uid://bvx4dhhrx6o75"]
+[gd_scene load_steps=4 format=3 uid="uid://bvx4dhhrx6o75"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7lew4"]
+bg_color = Color(0.145098, 0.227451, 0.368627, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xv5i4"]
+bg_color = Color(0.145098, 0.227451, 0.368627, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dv27x"]
+bg_color = Color(0.145098, 0.227451, 0.368627, 1)
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -15,47 +24,67 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0509804, 0.168627, 0.270588, 1)
+color = Color(0.0901961, 0.12549, 0.219608, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 48.0
+grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="Sidebar" type="Panel" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="newsTicker" type="Panel" parent="MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7lew4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="sideMenu" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xv5i4")
+
+[node name="activeWindow" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_dv27x")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Sidebar"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/activeWindow"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
-[node name="top_container" type="VBoxContainer" parent="HBoxContainer/Sidebar/VBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/activeWindow/MarginContainer"]
+custom_minimum_size = Vector2(192, 64)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Beg for Money"
 
-[node name="ToggleButton" type="Control" parent="HBoxContainer/Sidebar/VBoxContainer/top_container"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/activeWindow/MarginContainer"]
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="HBoxContainer/Sidebar/VBoxContainer/top_container/ToggleButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 40
-text = ">"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="bottom_container" type="VBoxContainer" parent="HBoxContainer/Sidebar/VBoxContainer"]
-layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
