@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bvx4dhhrx6o75"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0509804, 0.168627, 0.270588, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 48.0
+grow_vertical = 2
+
+[node name="Sidebar" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Sidebar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="top_container" type="VBoxContainer" parent="HBoxContainer/Sidebar/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ToggleButton" type="Control" parent="HBoxContainer/Sidebar/VBoxContainer/top_container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Sidebar/VBoxContainer/top_container/ToggleButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = ">"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="bottom_container" type="VBoxContainer" parent="HBoxContainer/Sidebar/VBoxContainer"]
+layout_mode = 2
